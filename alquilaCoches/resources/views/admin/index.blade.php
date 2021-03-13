@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <button class="btn btn-primary"><a href="{{ route('alquiler.crear') }}">Crear Alquiler</a></button>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="table">
@@ -22,8 +23,11 @@
                                 <th scope="col">Administración</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                          @foreach ($usuarios as $usuario)
+                            @foreach ($usuarios as $usuario)
+
+                            {{ $usuario->name }} <br>
 
                             @foreach ($usuario->coche as $coche)
                                 <tr class=
@@ -40,7 +44,7 @@
                                             echo 'table-success';
                                         @endphp
                                     @endif>
-                                    <td>{{ $loop->index }}</td>
+                                    <td>{{ $loop->index + 1 }}</td>
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$coche->marca}}</td>
                                     <td>{{$coche->modelo}}</td>
@@ -51,8 +55,8 @@
                                         <p class="badge bg-success">Abierto</p>
                                     </td>
                                     <td>
-                                        <button class="btn btn-warning"><a href="">Editar</a></button>
-                                        <button class="btn btn-danger"><a href="">Eliminar</a></button>
+                                        <button class="btn btn-warning"><a href="{{ url("/alquiler/editar/$usuario->id/$coche->id") }}">Editar</a></button>
+                                        <button class="btn btn-danger"><a href="{{ url("/alquiler/eliminar/$usuario->id/$coche->id") }}">Eliminar</a></button>
                                     </td>
                                     @else
                                         <td>

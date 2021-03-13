@@ -16,7 +16,11 @@ class CocheController extends Controller
      */
     public function indexAdmin()
     {
+        // $usuarios = User::all();
+
         $usuarios = Coche::find(1)->user()->paginate(1);
+
+        // dd($usuarios);
 
         return view('admin.index', ['usuarios' => $usuarios]);
     }

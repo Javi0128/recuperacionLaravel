@@ -16,7 +16,7 @@ class CocheUser extends Migration
         Schema::create('coche_users', function (Blueprint $table) {
             $table->unsignedBigInteger('coche_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('fecha_alquiler')->default(today());
+            $table->date('fecha_alquiler');
             $table->timestamps();
 
             $table->primary(['coche_id', 'user_id', 'fecha_alquiler']);

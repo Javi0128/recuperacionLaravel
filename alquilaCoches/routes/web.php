@@ -22,6 +22,17 @@ Route::get('/admin', 'CocheController@indexAdmin')->middleware(['auth','isAdmin'
 
 Route::get('/cliente', 'CocheController@indexCliente')->middleware(['auth']);
 
+Route::get('/alquiler/crear', 'AlquilerController@index')->middleware(['auth','isAdmin'])->name('alquiler.crear');
+
+Route::post('/alquiler/guardar', 'AlquilerController@create')->middleware(['auth','isAdmin'])->name('alquiler.guardar');
+
+Route::get('/alquiler/editar/{idUser}/{idCoche}', 'AlquilerController@edit')->middleware(['auth','isAdmin'])->name('alquiler.editar');
+
+Route::post('/alquiler/guardarEdicion/{idUser}/{idCoche}', 'AlquilerController@update')->middleware(['auth','isAdmin'])->name('alquiler.guardarEdicion');
+
+Route::get('/alquiler/eliminar/{idUser}/{idCoche}', 'AlquilerController@delete')->middleware(['auth','isAdmin'])->name('alquiler.eliminar');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
